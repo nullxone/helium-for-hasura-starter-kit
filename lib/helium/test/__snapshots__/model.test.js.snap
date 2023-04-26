@@ -1,6 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`class to tracked table 1`] = `
+exports[`belongs to relationship, has many relationship 1`] = `
+"table:
+  name: projects
+  schema: public
+object_relationships:
+  - name: user
+    using:
+      manual_configuration:
+        column_mapping:
+          user_id: id
+        insertion_order: null
+        remote_table:
+          name: users
+          schema: public
+array_relationships:
+  - name: tasks
+    using:
+      manual_configuration:
+        column_mapping:
+          id: project_id
+        insertion_order: null
+        remote_table:
+          name: tasks
+          schema: public
+"
+`;
+
+exports[`class to tracked table, has one relationship 1`] = `
 "table:
   name: users
   schema: public
