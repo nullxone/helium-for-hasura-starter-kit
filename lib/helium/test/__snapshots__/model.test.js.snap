@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class to tracked table 1`] = `
+"table:
+  name: users
+  schema: public
+"
+`;
