@@ -11,3 +11,12 @@ object_relationships:
         remote_table:
           name: projects
           schema: public
+  - name: supervisor
+    using:
+      manual_configuration:
+        column_mapping:
+          supervisor_id: id
+        insertion_order: null
+        remote_table:
+          name: users
+          schema: public
