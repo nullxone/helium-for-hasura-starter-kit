@@ -4,6 +4,16 @@ exports[`class to tracked table 1`] = `
 "table:
   name: users
   schema: public
+object_relationships:
+  - name: project
+    using:
+      manual_configuration:
+        column_mapping:
+          id: user_id
+        insertion_order: null
+        remote_table:
+          name: projects
+          schema: public
 "
 `;
 
