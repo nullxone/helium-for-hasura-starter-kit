@@ -6,3 +6,9 @@ exports[`class to tracked table 1`] = `
   schema: public
 "
 `;
+
+exports[`write all tables file 1`] = `
+"- '!include public_tasks.yaml'
+- '!include public_users.yaml'
+"
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`database config to database metadata 1`] = `
+"- name: default
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url:
+        from_env: test_database_url
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include default/tables/tables.yaml"
+"
+`;
