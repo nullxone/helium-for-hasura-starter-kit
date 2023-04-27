@@ -1,4 +1,6 @@
 {
+  "name": "Sample Helium App",
+  "license": "MIT",
   "devDependencies": {
     "graphql": "^16.6.0",
     "graphql-request": "^6.0.0",
