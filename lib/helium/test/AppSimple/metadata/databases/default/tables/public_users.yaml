@@ -26,18 +26,33 @@ select_permissions:
       filter:
         id:
           _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - email
+        - supervisor_id
+        - created_at
 insert_permissions:
   - role: user
     permission:
       check:
         id:
           _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - email
+        - supervisor_id
+        - created_at
 update_permissions:
   - role: user
     permission:
       filter:
         id:
           _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - email
+        - supervisor_id
+        - created_at
       check:
         id:
           _eq: X-Hasura-User-Id
