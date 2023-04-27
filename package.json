@@ -1,5 +1,5 @@
 {
-  "name": "Sample Helium App",
+  "name": "SampleHeliumApp",
   "license": "MIT",
   "devDependencies": {
     "graphql": "^16.6.0",
@@ -9,5 +9,7 @@
   "scripts": {
     "test": "jest"
   },
-  "dependencies": {}
+  "dependencies": {
+    "helium-for-hasura": "file:../helium-for-hasura"
+  }
 }
