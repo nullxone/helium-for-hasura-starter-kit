@@ -1,1 +1,2 @@
 - '!include public_tasks.yaml'
+- '!include tables.yaml'
