@@ -7,7 +7,5 @@
   "scripts": {
     "test": "jest"
   },
-  "dependencies": {
-    "helium-for-hasura": "file:../helium-for-hasura"
-  }
+  "dependencies": {}
 }
