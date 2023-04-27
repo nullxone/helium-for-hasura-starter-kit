@@ -5,8 +5,7 @@ exports[`database config to database metadata 1`] = `
   kind: postgres
   configuration:
     connection_info:
-      database_url:
-        from_env: test_database_url
+      database_url: test_database_url
       isolation_level: read-committed
       use_prepared_statements: false
   tables: "!include default/tables/tables.yaml"

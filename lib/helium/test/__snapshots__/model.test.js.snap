@@ -53,6 +53,60 @@ object_relationships:
 "
 `;
 
+exports[`complex predicate 1`] = `
+{
+  "_and": [
+    {
+      "user": {
+        "id": {
+          "_eq": "X-Hasura-User-Id",
+        },
+      },
+    },
+    {
+      "_or": [
+        {
+          "_and": [
+            {
+              "_not": {
+                "is_reviewed": {
+                  "_eq": true,
+                },
+              },
+            },
+            {
+              "category": {
+                "_eq": "editorial",
+              },
+            },
+          ],
+        },
+        {
+          "category": {
+            "_ne": "editorial",
+          },
+        },
+      ],
+    },
+    {
+      "_exists": {
+        "_table": {
+          "name": "blog",
+          "schema": "public",
+        },
+        "_where": {
+          "authors": {
+            "id": {
+              "_eq": "X-Hasura-User-Id",
+            },
+          },
+        },
+      },
+    },
+  ],
+}
+`;
+
 exports[`write all tables file 1`] = `
 "- '!include public_tasks.yaml'
 - '!include public_users.yaml'

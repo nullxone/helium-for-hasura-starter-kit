@@ -37,5 +37,5 @@ test("can query the database", async () => {
     `
   );
 
-  console.log(JSON.stringify(await res.json()));
+  expect((await res.json()).data.tasks).not.toBeUndefined();
 });
