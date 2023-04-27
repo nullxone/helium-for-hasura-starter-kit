@@ -1,1 +1,1 @@
-node ./lib/helium/compile.js ./helium ./metadata
+node ./lib/helium-for-hasura/compile.js ./helium ./metadata
