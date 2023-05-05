@@ -8,6 +8,7 @@ class Users {
   static get permissions() {
     const pred = eq("id", "X-Hasura-User-Id");
     return {
+      select: permission(pred, ["id", "name"]),
       update: permission(pred, ["name"]),
     };
   }

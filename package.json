@@ -10,6 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "helium-for-hasura": "../helium-for-hasura/"
+    "@ngneat/falso": "^6.4.0",
+    "axios": "^1.4.0",
+    "helium-for-hasura": "../helium-for-hasura"
   }
 }
