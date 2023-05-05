@@ -47,8 +47,10 @@ test("can query the database", async () => {
   const res = await makeQuery(
     gql`
       query MyQuery {
-        tasks {
-          id
+        users {
+          tasks {
+            id
+          }
         }
       }
     `,
@@ -56,5 +58,18 @@ test("can query the database", async () => {
     { "X-Hasura-Admin-Secret": process.env.HASURA_GRAPHQL_ADMIN_SECRET }
   );
 
-  expect((await res.json()).data.tasks).not.toBeUndefined();
+  expect((await res.json()).data.users).not.toBeUndefined();
+});
+
+test("user cannot update another users profile", async () => {
+  const res = await makeQuery(
+    gql`
+      mutation {
+      }
+    `,
+    undefined,
+    { "X-Hasura-Admin-Secret": process.env.HASURA_GRAPHQL_ADMIN_SECRET }
+  );
+
+  expect((await res.json()).data.users).not.toBeUndefined();
 });
