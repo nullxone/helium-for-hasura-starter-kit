@@ -106,8 +106,6 @@ test("user can update own profile", async () => {
     password: "1234",
   });
 
-  console.log(session);
-
   const res = await makeQuery(
     gql`
       mutation {
@@ -130,8 +128,6 @@ test("user cannot update another users profile", async () => {
     email: "test1@email.com",
     password: "1234",
   });
-
-  console.log(session);
 
   const res = await makeQuery(
     gql`
