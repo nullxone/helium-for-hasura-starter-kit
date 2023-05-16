@@ -1,5 +1,6 @@
 {
-  "name": "SampleHeliumApp",
+  "name": "helium-for-hasura-starter-kit",
+  "version": "0.1.0",
   "license": "MIT",
   "devDependencies": {
     "graphql": "^16.6.0",
