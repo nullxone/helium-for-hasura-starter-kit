@@ -4,7 +4,7 @@ const { makeQuery } = require("../utils");
 const { users, tasks } = require("./seedData");
 
 async function writeSeedData() {
-  const data1 = await makeQuery(
+  const res = await makeQuery(
     gql`
       mutation (
         $users: [users_insert_input!]!
@@ -25,7 +25,8 @@ async function writeSeedData() {
     { users, tasks },
     { "X-Hasura-Admin-Secret": process.env.HASURA_GRAPHQL_ADMIN_SECRET }
   );
-  console.log(data1.data);
+
+  console.log(res.data);
 }
 
 writeSeedData();
