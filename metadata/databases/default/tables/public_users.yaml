@@ -11,3 +11,29 @@ array_relationships:
         remote_table:
           name: tasks
           schema: public
+select_permissions:
+  - role: user
+    permission:
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - name
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - name
+update_permissions:
+  - role: user
+    permission:
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - name

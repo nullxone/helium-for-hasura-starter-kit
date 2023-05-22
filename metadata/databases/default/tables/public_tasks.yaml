@@ -11,3 +11,42 @@ object_relationships:
         remote_table:
           name: users
           schema: public
+select_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - title
+        - body
+        - user_id
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - title
+        - body
+        - user_id
+update_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - title
+        - body
+        - user_id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id

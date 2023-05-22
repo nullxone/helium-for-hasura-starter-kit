@@ -1,5 +1,5 @@
 const { gql } = require("graphql-request");
-const { makeQuery } = require("../utils");
+const { makeQuery, jsonLog } = require("../utils");
 
 const { users } = require("../seeds/seedData");
 
@@ -21,5 +21,5 @@ test("can query the database with admin secret", async () => {
   );
 
   expect(res.data.data.users).not.toBeUndefined();
-  console.log(JSON.stringify(res.data, null, 2));
+  // jsonLog(res.data);
 });
