@@ -1235,8 +1235,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-helium-for-hasura@../helium-for-hasura:
-  version "0.1.0"
+helium-for-hasura@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/helium-for-hasura/-/helium-for-hasura-0.1.1.tgz#f98f050fb8f0946fca594cc37f8868508d346196"
+  integrity sha512-3cpLLUvLltMEyw/R/d8QTsadlzq35yZlIN82nKt+9D46g+hke0Tai5Cs7mt1vOUWMeFn5KKb5J0HDSW3eEAKFQ==
   dependencies:
     commander "^10.0.1"
     ejs "^3.1.9"
