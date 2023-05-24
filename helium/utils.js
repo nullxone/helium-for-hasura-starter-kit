@@ -54,6 +54,15 @@ async function signup({ email, password }) {
   return res.data.session;
 }
 
+async function signin({ email, password }) {
+  const res = await axios.post(authUrl("/signin/email-password"), {
+    email,
+    password,
+  });
+
+  return res.data.session;
+}
+
 function jsonLog(data) {
   console.log(JSON.stringify(data, null, 2));
 }
@@ -63,6 +72,7 @@ module.exports = {
   makeAdminQuery,
   makeUserQuery,
   signup,
+  signin,
   deleteAllAuthUsers,
   jsonLog,
 };
