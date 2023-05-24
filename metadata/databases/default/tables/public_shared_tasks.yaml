@@ -1,66 +1,65 @@
 table:
-  name: tasks
+  name: shared_tasks
   schema: public
 object_relationships:
-  - name: user
+  - name: with_user
     using:
       manual_configuration:
         column_mapping:
-          user_id: id
+          with_user_id: id
         insertion_order: null
         remote_table:
           name: users
           schema: public
-array_relationships:
-  - name: shared_tasks
+  - name: task
     using:
       manual_configuration:
         column_mapping:
-          id: task_id
+          task_id: id
         insertion_order: null
         remote_table:
-          name: shared_tasks
+          name: tasks
           schema: public
 select_permissions:
   - role: user
     permission:
       filter:
         _or:
-          - user_id:
-              _eq: X-Hasura-User-Id
-          - shared_tasks:
-              with_user_id:
+          - task:
+              user_id:
                 _eq: X-Hasura-User-Id
+          - with_user_id:
+              _eq: X-Hasura-User-Id
       columns:
         - id
-        - title
-        - body
-        - user_id
+        - with_user_id
+        - task_id
 insert_permissions:
   - role: user
     permission:
       check:
-        user_id:
-          _eq: X-Hasura-User-Id
+        task:
+          user_id:
+            _eq: X-Hasura-User-Id
       columns:
         - id
-        - title
-        - body
-        - user_id
+        - with_user_id
+        - task_id
 update_permissions:
   - role: user
     permission:
       filter:
-        user_id:
-          _eq: X-Hasura-User-Id
+        task:
+          user_id:
+            _eq: X-Hasura-User-Id
       columns:
         - id
-        - title
-        - body
-        - user_id
+        - with_user_id
+        - task_id
 delete_permissions:
   - role: user
     permission:
       filter:
-        user_id:
-          _eq: X-Hasura-User-Id
+        task:
+          user_id:
+            _eq: X-Hasura-User-Id

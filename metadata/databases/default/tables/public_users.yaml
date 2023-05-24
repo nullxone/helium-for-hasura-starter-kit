@@ -11,6 +11,15 @@ array_relationships:
         remote_table:
           name: tasks
           schema: public
+  - name: shared_tasks
+    using:
+      manual_configuration:
+        column_mapping:
+          id: with_user_id
+        insertion_order: null
+        remote_table:
+          name: shared_tasks
+          schema: public
 select_permissions:
   - role: user
     permission:
