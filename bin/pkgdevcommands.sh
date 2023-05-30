@@ -6,6 +6,6 @@ function setupdev() {
   cd ../helium-for-hasura
   yarn link
   cd ../app
-  yarn add ../helium-for-hasura
+  yarn add link:../helium-for-hasura
   yarn link helium-for-hasura
 }
