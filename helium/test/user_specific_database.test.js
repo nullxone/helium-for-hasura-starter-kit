@@ -1,7 +1,13 @@
 const { gql } = require("graphql-request");
 const { seedData } = require("../seeds/seedData");
 const { clearDatabase } = require("../seeds/seeds");
-const { makeAdminQuery, jsonLog, signin, makeUserQuery } = require("../utils");
+const {
+  makeAdminQuery,
+  testLog,
+  jsonLog,
+  signin,
+  makeUserQuery,
+} = require("../utils");
 
 beforeEach(async () => {
   await clearDatabase();
@@ -12,7 +18,7 @@ test("user specific database", async () => {
 
   for (let i = 0; i < authUsers.length; i++) {
     const u = authUsers[i];
-    console.log(u.name);
+    testLog(u.name);
 
     const session = await signin({ email: u.email, password: "1234" });
     const {

@@ -6,11 +6,11 @@ services:
     volumes:
       - .:/app
     environment:
-      HELIUM_DATABASE_URL: postgres://dbuser:dbpwd@localhost:5432/appdb
+      HELIUM_DATABASE_URL: postgres://dbuser:dbpwd@database:5432/appdb
+      HASURA_GRAPHQL_ENDPOINT: http://hasura:8080
       HASURA_GRAPHQL_ADMIN_SECRET: aFyrZOSGqAj2Eob5lNWz
-      HASURA_GRAPHQL_GRAPHQL_URL: http://localhost:8080/v1/graphql
-      AUTH_SERVER_URL: http://localhost:4000
-    network_mode: host
+      HASURA_GRAPHQL_GRAPHQL_URL: http://hasura:8080/v1/graphql
+      AUTH_SERVER_URL: http://auth:4000
   database:
     image: postgres:15.2
     ports:
@@ -21,7 +21,6 @@ services:
       POSTGRES_USER: dbuser
       POSTGRES_PASSWORD: dbpwd
       POSTGRES_DB: appdb
-    network_mode: host
   hasura:
     image: hasura/graphql-engine:v2.23.0
     ports:
@@ -30,7 +29,7 @@ services:
     - database
     environment:
       ## postgres database to store Hasura metadata
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://dbuser:dbpwd@localhost:5432/appdb
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://dbuser:dbpwd@database:5432/appdb
       ## enable the console served by server
       HASURA_GRAPHQL_ENABLE_CONSOLE: "false" # set to "false" to disable console
       ## enable debugging mode. It is recommended to disable this in production
@@ -42,7 +41,6 @@ services:
       HASURA_GRAPHQL_ADMIN_SECRET: aFyrZOSGqAj2Eob5lNWz
       HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS256", "key":"5152fa850c02dc222631cca898ed1485821a70912a6e3649c49076912daa3b62182ba013315915d64f40cddfbb8b58eb5bd11ba225336a6af45bbae07ca873f3","issuer":"hasura-auth"}'
     restart: unless-stopped
-    network_mode: host
   auth:
     image: akshaya01/hasura-auth-authuser-mod:0.19.2
     depends_on:
@@ -51,9 +49,9 @@ services:
     environment:
       HASURA_GRAPHQL_ADMIN_SECRET: aFyrZOSGqAj2Eob5lNWz
       HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS256", "key":"5152fa850c02dc222631cca898ed1485821a70912a6e3649c49076912daa3b62182ba013315915d64f40cddfbb8b58eb5bd11ba225336a6af45bbae07ca873f3","issuer":"hasura-auth"}'
-      HASURA_GRAPHQL_DATABASE_URL: postgres://dbuser:dbpwd@localhost:5432/appdb 
-      HASURA_GRAPHQL_GRAPHQL_URL: http://localhost:8080/v1/graphql
-      AUTH_SMTP_HOST: localhost
+      HASURA_GRAPHQL_DATABASE_URL: postgres://dbuser:dbpwd@database:5432/appdb 
+      HASURA_GRAPHQL_GRAPHQL_URL: http://hasura:8080/v1/graphql
+      AUTH_SMTP_HOST: mailhog
       AUTH_SMTP_PORT: 1025
       AUTH_SMTP_PASS: password
       AUTH_SMTP_USER: user
@@ -65,7 +63,7 @@ services:
     #   - ./email-templates:/app/email-templates
     ports:
       - '4000:4000'
-    network_mode: host
+    restart: unless-stopped
   mailhog:
     image: mailhog/mailhog
     environment:
@@ -84,7 +82,6 @@ services:
       - 8025:8025 # web ui
     volumes:
       - mailhog-data:/maildir
-    network_mode: host
 
 volumes:
   database-data:

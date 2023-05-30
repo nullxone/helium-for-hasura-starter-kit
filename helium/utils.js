@@ -63,7 +63,13 @@ async function signin({ email, password }) {
   return res.data.session;
 }
 
+function testLog(...args) {
+  if (process.env.TEST_LOG !== "true") return;
+  console.log(...args);
+}
+
 function jsonLog(data) {
+  if (process.env.TEST_LOG !== "true") return;
   console.log(JSON.stringify(data, null, 2));
 }
 
@@ -74,5 +80,6 @@ module.exports = {
   signup,
   signin,
   deleteAllAuthUsers,
+  testLog,
   jsonLog,
 };

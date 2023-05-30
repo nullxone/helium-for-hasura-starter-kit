@@ -5,6 +5,8 @@ const {
   shareTask,
 } = require("../seeds/seeds");
 
+const { testLog } = require("../utils");
+
 beforeEach(async () => {
   await clearDatabase();
 });
@@ -14,17 +16,17 @@ test("test api", async () => {
     name: "John Doe",
     email: "john.doe@email.com",
   });
-  console.log(user);
+  testLog(user);
 
   const task = await createTask({
     title: "Do the dishes",
     user_id: user.id,
   });
-  console.log(task);
+  testLog(task);
 
   const sharedTask = await shareTask({
     with_user_id: user.id,
     task_id: task.id,
   });
-  console.log(sharedTask);
+  testLog(sharedTask);
 });
