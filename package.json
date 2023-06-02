@@ -1,5 +1,5 @@
 {
-  "name": "helium-for-hasura-starter-kit",
+  "name": "todo-app-sharing",
   "version": "0.1.0",
   "license": "MIT",
   "devDependencies": {
@@ -8,11 +8,11 @@
     "jest": "^29.5.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "@ngneat/falso": "^6.4.0",
     "axios": "^1.4.0",
-    "helium-for-hasura": "0.1.1"
+    "helium-for-hasura": "^0.1.1"
   }
 }

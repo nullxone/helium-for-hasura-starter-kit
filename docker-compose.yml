@@ -11,6 +11,9 @@ services:
       HASURA_GRAPHQL_ADMIN_SECRET: aFyrZOSGqAj2Eob5lNWz
       HASURA_GRAPHQL_GRAPHQL_URL: http://hasura:8080/v1/graphql
       AUTH_SERVER_URL: http://auth:4000
+    ports:
+    - "9695:9695"
+    - "9693:9693"
   database:
     image: postgres:15.2
     ports:
